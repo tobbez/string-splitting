@@ -16,7 +16,7 @@ for line in sys.stdin:
     count += 1
 
 delta_sec = int(time.time() - start_time)
-print("Python: Saw {0} lines in {1} seconds. ".format(count, delta_sec), end='')
+print("Python: Saw {0} lines in {1} seconds.".format(count, delta_sec), end='')
 if delta_sec > 0:
     lps = int(count/delta_sec)
     print("  Crunch Speed: {0}".format(lps))
