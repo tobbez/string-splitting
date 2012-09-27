@@ -4,7 +4,8 @@ http://stackoverflow.com/questions/9378500/why-is-splitting-a-string-slower-in-c
 splitc{1,2,3}.cpp were written by me, the others were taken from the
 Stack Overflow.
 
-You can use the provided Makefile to compile all the programs.
+You can use the provided Makefile to compile all the programs, and
+run_tests.bash to run all the test cases.
 
 I have also included a script to generate test data (gen_test_data.py).
 It generates 2,000,000 lines (827MiB) of data on standard output.
