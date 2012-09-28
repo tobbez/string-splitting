@@ -1,4 +1,4 @@
-// Contributed by Arash Partow <arash@partow.net>
+// Contributed by Arash Partow (http://www.partow.net/)
 // Requires StrTk (http://www.partow.net/programming/strtk/index.html)
 #include <iostream>
 #include <string>
