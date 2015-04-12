@@ -1,5 +1,5 @@
 
-all: split1 split2 split6 split7 splitc1 splitc2 splitc3
+all: split1 split2 split6 split7 split8 splitc1 splitc2 splitc3
 
 %: %.cpp
 	g++ -Wall -O3 -std=c++0x -o $@ $<
@@ -7,4 +7,4 @@ all: split1 split2 split6 split7 splitc1 splitc2 splitc3
 .PHONY: clean
 
 clean:
-	@rm -f split1 split2 split6 split7 splitc1 splitc2 splitc3
+	@rm -f split1 split2 split6 split7 split8 splitc1 splitc2 splitc3
