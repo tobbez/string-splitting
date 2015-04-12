@@ -5,7 +5,7 @@
 #include <ctime>
 #include <vector>
 
-#include "strtk.hpp"
+#include "strtk/strtk.hpp"
 
 
 int main()
