@@ -1,0 +1,3 @@
+[submodule "strtk"]
+	path = strtk
+	url = https://github.com/ArashPartow/strtk.git

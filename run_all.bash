@@ -13,7 +13,7 @@ python --version
 echo "=== End System info"
 echo
 
-for i in `find . -maxdepth 1 -executable -iname 'split*.py' | sort ; find . -maxdepth 1 -executable \! -iname '*.py' -iname 'split*' | sort`
+for i in `find . -maxdepth 1 -perm +111 -type f -iname 'split*.py' | sort ; find . -maxdepth 1 -perm +111 -type f \! -iname '*.py' -iname 'split*' | sort`
 do
 	printf "%-16s " $i
 	$i < test_data
