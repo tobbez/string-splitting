@@ -1,19 +1,14 @@
 // Contributed by Anders Bakken
 #include <string>
 #include <vector>
+#include <string.h>
 #include <sys/time.h>
 #include <cstdint>
 
-static inline uint64_t currentTimeMs()
-{
-    timeval time;
-    gettimeofday(&time, NULL);
-    return (time.tv_sec * static_cast<uint64_t>(1000)) + (time.tv_usec / static_cast<uint64_t>(1000));
-}
-
+#define MULTIDELIMITER
 int main()
 {
-    const uint64_t start = currentTimeMs();
+    const time_t start = time(0);
     char buf[16384];
     size_t pos = 0;
     std::vector<std::string> data;
@@ -26,31 +21,40 @@ int main()
         const int count = read + pos;
         for (int i=0; i<count; ++i) {
             switch (*ch) {
+            case '\f':
+            case '\t':
+            case '\v':
             case ' ':
-                data.push_back(std::string(last, ch));
-                last = ch + 1;
+                if (last) {
+                    data.push_back(std::string(last, ch));
+                    last = 0;
+                }
                 break;
             case '\n':
-                data.push_back(std::string(last, ch));
-                last = ch + 1;
+                if (last) {
+                    data.push_back(std::string(last, ch));
+                    last = 0;
+                }
                 data.clear();
                 ++lines;
+                break;
             default:
+                if (!last)
+                    last = ch;
                 break;
             }
             ++ch;
         }
-        if (last == buf + sizeof(buf)) {
+        if (!last || last == buf + sizeof(buf)) {
             pos = 0;
         } else {
             pos = buf + sizeof(buf) - last - 1;
             memmove(buf, last, pos);
         }
     }
-    const double elapsed = static_cast<double>(currentTimeMs() - start) / 1000.0;
-    printf("C++   : Saw %d lines in %.2f sec\n", lines, elapsed);
-    if (elapsed)
-        printf("  Crunch speed: %.2f\n", lines / elapsed);
+    const time_t elapsed = time(0) - start;
+    printf("C++   : Saw %d lines in %zu seconds.  Crunch speed: %zu\n",
+           lines, elapsed, elapsed ? lines / elapsed : 0);
 
     return 0;
 }
