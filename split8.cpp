@@ -15,13 +15,13 @@ int main()
 
    std::cin.sync_with_stdio(false); //disable synchronous IO
 
-	 typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
-	 boost::char_separator<char> sep(" ");
+   typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
+   boost::char_separator<char> sep(" ");
 
    while(std::cin)
    {
       std::getline(std::cin, input_line);
-			Tokenizer fields(input_line, sep);
+      Tokenizer fields(input_line, sep);
       count++;
    };
 
