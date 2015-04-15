@@ -63,17 +63,22 @@ int main() {
     time_t start = time(NULL);
 
     cin.sync_with_stdio(false); //disable synchronous IO
+    size_t numWords = 0;
+    size_t numChars = 0;
 
     while(cin) {
         getline(cin, input_line);
 
         vector<StringRef> const v = split3( input_line );
+        numWords += v.size();
+        for (vector<StringRef>::const_iterator iter = v.begin(); iter != v.end(); ++iter)
+            numChars += iter->size();
         count++;
     };
 
     count--; //subtract for final over-read
     sec = (int) time(NULL) - start;
-    cerr << "C++   : Saw " << count << " lines in " << sec << " seconds." ;
+    cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
     if (sec > 0) {
         lps = count / sec;
         cerr << "  Crunch speed: " << lps << endl;

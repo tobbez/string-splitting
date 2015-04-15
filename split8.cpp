@@ -17,17 +17,22 @@ int main()
 
    typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
    boost::char_separator<char> sep(" ");
+   std::size_t numWords = 0;
+   std::size_t numChars = 0;
 
    while(std::cin)
    {
       std::getline(std::cin, input_line);
       Tokenizer fields(input_line, sep);
+      numWords += std::distance(fields.begin(), fields.end());
+      for (Tokenizer::const_iterator iter = fields.begin(); iter != fields.end(); ++iter)
+         numChars += iter->size();
       count++;
    };
 
    count--; //subtract for final over-read
    sec = (int) time(NULL) - start;
-   std::cerr << "C++   : Saw " << count << " lines in " << sec << " seconds." ;
+   std::cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
 
    if (sec > 0)
    {
