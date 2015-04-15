@@ -33,19 +33,24 @@ int main() {
     time_t start = time(NULL);
 
     cin.sync_with_stdio(false); //disable synchronous IO
+    size_t numWords = 0;
+    size_t numChars = 0;
 
     while(cin) {
         getline(cin, input_line);
         spline.clear(); //empty the vector for the next line to parse
 
         split1(spline, input_line);  
+        numWords += spline.size();
+        for (vector<string>::const_iterator iter = spline.begin(); iter != spline.end(); ++iter)
+            numChars += iter->size();
 
         count++;
     };
 
     count--; //subtract for final over-read
     sec = (int) time(NULL) - start;
-    cerr << "C++   : Saw " << count << " lines in " << sec << " seconds." ;
+    cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
     if (sec > 0) {
         lps = count / sec;
         cerr << "  Crunch speed: " << lps << endl;

@@ -11,6 +11,8 @@
 int main()
 {
    std::string input_line;
+   typedef std::pair<const char *, const char *> StrLimits;
+   std::vector<StrLimits> spline;
    long count = 0;
    int sec, lps;
    time_t start = time(NULL);
@@ -18,20 +20,26 @@ int main()
    std::cin.sync_with_stdio(false); //disable synchronous IO
 
    const strtk::single_delimiter_predicate<std::string::value_type> delimiter(' ');
-   std::size_t token_count;
+   std::size_t numWords = 0;
+   std::size_t numChars = 0;
 
    while(std::cin)
    {
       std::getline(std::cin, input_line);
-      strtk::split(delimiter,
+      spline.resize(100);
+      std::size_t numFields = strtk::split(delimiter,
                    input_line,
-                   strtk::counting_back_inserter<strtk::std_string::range_t>(token_count));
+                   spline.begin());
+      spline.resize(numFields);
+      numWords += numFields;
+      for (std::vector<StrLimits>::const_iterator iter = spline.begin(); iter != spline.end(); ++iter)
+         numChars += iter->second - iter->first;
       count++;
    };
 
    count--; //subtract for final over-read
    sec = (int) time(NULL) - start;
-   std::cerr << "C++   : Saw " << count << " lines in " << sec << " seconds." ;
+   std::cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
 
    if (sec > 0)
    {
