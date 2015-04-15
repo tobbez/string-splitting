@@ -32,7 +32,7 @@ vector<StringRef> split3( string const& str, char delimiter = ' ' )
 
     State state = inSpace;
     char const*     pTokenBegin = 0;    // Init to satisfy compiler.
-    for( auto it = str.begin(); it != str.end(); ++it )
+    for( string::const_iterator it = str.begin(); it != str.end(); ++it )
     {
         State const newState = (*it == delimiter? inSpace : inToken);
         if( newState != state )
