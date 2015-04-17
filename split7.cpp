@@ -26,11 +26,9 @@ int main()
 
    spline.reserve(100);
 
-   while(std::cin)
+   while(std::getline(std::cin, input_line))
    {
       spline.clear();
-
-      std::getline(std::cin, input_line);
 
       numWords += strtk::split(delimiter,
                                input_line,
@@ -42,7 +40,6 @@ int main()
       count++;
    };
 
-   count--; //subtract for final over-read
    sec = (int) time(NULL) - start;
    std::cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
 
