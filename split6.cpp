@@ -24,10 +24,8 @@ public:
     {}
 };
 
-vector<StringRef> split3( string const& str, char delimiter = ' ' )
+void split3( string const& str, vector<StringRef> &result, char delimiter = ' ' )
 {
-    vector<StringRef>   result;
-
     enum State { inSpace, inToken };
 
     State state = inSpace;
@@ -52,12 +50,11 @@ vector<StringRef> split3( string const& str, char delimiter = ' ' )
     {
         result.push_back( StringRef( pTokenBegin, &*str.end() - pTokenBegin ) );
     }
-    return result;
 }
 
 int main() {
     string input_line;
-    vector<string> spline;
+    vector<StringRef> spline;
     long count = 0;
     int sec, lps;
     time_t start = time(NULL);
@@ -67,9 +64,10 @@ int main() {
     size_t numChars = 0;
 
     while(getline(cin, input_line)) {
-        vector<StringRef> const v = split3( input_line );
-        numWords += v.size();
-        for (vector<StringRef>::const_iterator iter = v.begin(); iter != v.end(); ++iter)
+			  spline.clear();
+        split3( input_line, spline );
+        numWords += spline.size();
+        for (vector<StringRef>::const_iterator iter = spline.begin(); iter != spline.end(); ++iter)
             numChars += iter->size();
         count++;
     };
