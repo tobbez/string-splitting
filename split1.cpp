@@ -36,8 +36,7 @@ int main() {
     size_t numWords = 0;
     size_t numChars = 0;
 
-    while(cin) {
-        getline(cin, input_line);
+    while(getline(cin, input_line)) {
         spline.clear(); //empty the vector for the next line to parse
 
         split1(spline, input_line);  
@@ -48,7 +47,6 @@ int main() {
         count++;
     };
 
-    count--; //subtract for final over-read
     sec = (int) time(NULL) - start;
     cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
     if (sec > 0) {

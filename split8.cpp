@@ -20,9 +20,7 @@ int main()
    std::size_t numWords = 0;
    std::size_t numChars = 0;
 
-   while(std::cin)
-   {
-      std::getline(std::cin, input_line);
+   while(std::getline(std::cin, input_line)) {
       Tokenizer fields(input_line, sep);
       numWords += std::distance(fields.begin(), fields.end());
       for (Tokenizer::const_iterator iter = fields.begin(); iter != fields.end(); ++iter)
@@ -30,7 +28,6 @@ int main()
       count++;
    };
 
-   count--; //subtract for final over-read
    sec = (int) time(NULL) - start;
    std::cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
 
