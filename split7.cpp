@@ -4,6 +4,7 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <iterator>
 
 #include "strtk.hpp"
 
@@ -23,17 +24,21 @@ int main()
    std::size_t numWords = 0;
    std::size_t numChars = 0;
 
+   spline.reserve(100);
+
    while(std::cin)
    {
+      spline.clear();
+
       std::getline(std::cin, input_line);
-      spline.resize(100);
-      std::size_t numFields = strtk::split(delimiter,
-                   input_line,
-                   spline.begin());
-      spline.resize(numFields);
-      numWords += numFields;
+
+      numWords += strtk::split(delimiter,
+                               input_line,
+                               std::back_inserter(spline));
+
       for (std::vector<StrLimits>::const_iterator iter = spline.begin(); iter != spline.end(); ++iter)
          numChars += iter->second - iter->first;
+
       count++;
    };
 
