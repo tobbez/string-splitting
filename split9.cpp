@@ -1,43 +1,31 @@
-// Contributed by Arash Partow (http://www.partow.net/)
-// Requires StrTk (http://www.partow.net/programming/strtk/index.html)
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <ctime>
 #include <vector>
-#include <iterator>
 
-#include "strtk.hpp"
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/split.hpp>
 
 
 int main()
 {
    std::string input_line;
-   typedef std::pair<const char *, const char *> StrLimits;
-   std::vector<StrLimits> spline;
    long count = 0;
    timespec start;
    clock_gettime(CLOCK_MONOTONIC, &start);
 
    std::cin.sync_with_stdio(false); //disable synchronous IO
 
-   const strtk::single_delimiter_predicate<std::string::value_type> delimiter(' ');
+   std::vector<std::string> spline;
    std::size_t numWords = 0;
    std::size_t numChars = 0;
 
-   spline.reserve(100);
-
-   while(std::getline(std::cin, input_line))
-   {
-      spline.clear();
-
-      numWords += strtk::split(delimiter,
-                               input_line,
-                               std::back_inserter(spline));
-
-      for (std::vector<StrLimits>::const_iterator iter = spline.begin(); iter != spline.end(); ++iter)
-         numChars += iter->second - iter->first;
-
+   while(std::getline(std::cin, input_line)) {
+      boost::algorithm::split(spline, input_line, boost::algorithm::is_any_of(" "));
+      numWords += spline.size();
+      for (std::vector<std::string>::const_iterator iter = spline.begin(); iter != spline.end(); ++iter)
+         numChars += iter->size();
       count++;
    };
 
