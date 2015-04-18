@@ -2,9 +2,9 @@
 #include <iomanip>
 #include <string>
 #include <sstream>
-#include <time.h>
+#include <ctime>
 #include <vector>
-#include <string.h>
+#include <cstring>
 #include <cstdlib>
 
 using namespace std;

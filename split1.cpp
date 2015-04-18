@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <string>
 #include <sstream>
-#include <time.h>
+#include <ctime>
 #include <vector>
 
 using namespace std;
