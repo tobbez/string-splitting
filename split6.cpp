@@ -64,7 +64,7 @@ int main() {
     size_t numChars = 0;
 
     while(getline(cin, input_line)) {
-			  spline.clear();
+        spline.clear();
         split3( input_line, spline );
         numWords += spline.size();
         for (vector<StringRef>::const_iterator iter = spline.begin(); iter != spline.end(); ++iter)
