@@ -1,4 +1,5 @@
 #include <iostream>                                                              
+#include <iomanip>
 #include <string>
 #include <sstream>
 #include <time.h>
@@ -25,8 +26,8 @@ int main() {
     char input_line[MAX_LINE], *result;
     vector<string> spline;
     long count = 0;
-    int sec, lps;
-    time_t start = time(NULL);
+    timespec start;
+    clock_gettime(CLOCK_MONOTONIC, &start);
     size_t numWords = 0;
     size_t numChars = 0;
 
@@ -45,11 +46,13 @@ int main() {
         count++;
     };
 
-    sec = (int) time(NULL) - start;
-    cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << sec << " seconds." ;
+    timespec end;
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    const double sec = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) * 1e-9;
+    cerr << "C++   : Saw " << count << " lines (" << numWords << " words/" << numChars << " chars) in " << fixed << setprecision(1) << sec << " seconds." ;
     if (sec > 0) {
-        lps = count / sec;
-        cerr << "  Crunch speed: " << lps << endl;
+        const double lps = count / sec;
+        cerr << "  Crunch speed: " << fixed << setprecision(1) << lps << endl;
     } else
         cerr << endl;
     return 0;
