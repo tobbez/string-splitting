@@ -7,7 +7,8 @@ then
 fi
 
 echo "=== System info"
-uname -srpom
+uname -srom
+grep '^model name' /proc/cpuinfo | head -n1 | cut -c 14-
 g++ --version | head -n1
 python --version
 echo "=== End System info"
