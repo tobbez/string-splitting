@@ -16,6 +16,6 @@ echo
 
 for i in `find . -maxdepth 1 -executable -iname 'split*.py' | sort ; find . -maxdepth 1 -executable \! -iname '*.py' -iname 'split*' | sort`
 do
-	printf "%-16s " $i
+	printf "%-18s " $i
 	$i < test_data
 done
