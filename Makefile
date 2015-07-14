@@ -2,10 +2,10 @@ CXXFLAGS = -Wall -O3
 
 all: split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser
 
-split7: split7.cpp deps/strtk
+split7: split7.cpp | deps/strtk
 	$(CXX) $(LDFLAGS) -Ideps/strtk/ $(CXXFLAGS) split7.cpp -o split7
 
-split_subparser: split_subparser.cpp deps/json_parser
+split_subparser: split_subparser.cpp | deps/json_parser
 	$(CXX) $(LDFLAGS) -Ideps/json_parser/include/ $(CXXFLAGS) split_subparser.cpp -o split_subparser
 
 
@@ -23,7 +23,7 @@ update-deps: deps
 deps:
 	mkdir deps
 
-deps/strtk: deps
+deps/strtk: | deps
 	git clone --depth 1 https://github.com/ArashPartow/strtk.git deps/strtk
 
 deps/json_parser: deps
