@@ -7,6 +7,7 @@ then
 fi
 
 echo "=== System info"
+type lsb_release &> /dev/null && echo $(lsb_release -sir | tr '\n' ' ')
 uname -srom
 grep '^model name' /proc/cpuinfo | head -n1 | cut -c 14-
 g++ --version | head -n1
