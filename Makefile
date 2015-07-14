@@ -12,7 +12,7 @@ split_subparser: split_subparser.cpp deps/json_parser
 .PHONY: clean update-deps
 
 clean:
-	@rm -f split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3
+	@rm -f split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser
 
 update-deps: deps
 	git --git-dir=deps/strtk/.git/ --work-tree=deps/strtk/ fetch origin
