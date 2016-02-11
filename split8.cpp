@@ -23,9 +23,10 @@ int main()
 
    while(std::getline(std::cin, input_line)) {
       Tokenizer fields(input_line, sep);
-      numWords += std::distance(fields.begin(), fields.end());
-      for (Tokenizer::const_iterator iter = fields.begin(); iter != fields.end(); ++iter)
-         numChars += iter->size();
+      for( Tokenizer::const_iterator iter = fields.begin(); iter != fields.end(); ++iter){
+        numChars += iter->size();
+        ++numWords;
+      }
       count++;
    };
 
