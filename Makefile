@@ -1,4 +1,5 @@
-CXXFLAGS = -Wall -O3
+CXXFLAGS = -Wall -O3 -flto -march=native
+LDFLAGS = -flto
 
 all: split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser
 
