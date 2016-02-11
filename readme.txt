@@ -27,22 +27,25 @@ https://gist.githubusercontent.com/tobbez/55686ef79bf0b593d90a/raw/789e64318fd91
 
 $ ./run_all.bash 
 === System info
-Linux 3.13.0-57-generic x86_64 GNU/Linux
-Intel(R) Core(TM) i7-2720QM CPU @ 2.20GHz
-g++ (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4
-Python 2.7.6
+Ubuntu 15.10
+Linux 4.2.0-19-generic x86_64 GNU/Linux
+Intel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz
+g++ (GCC) 5.2.0
+Python 2.7.10
 === End System info
 
-./split5.py        Python: Saw 20000000 lines (60000000 words/806116396 chars) in 31.2 seconds.  Crunch Speed: 641052.9
-./split.py         Python: Saw 20000000 lines (60000000 words/806116396 chars) in 30.6 seconds.  Crunch Speed: 654202.5
-./split1           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 15.5 seconds.  Crunch speed: 1293952.3
-./split2           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 25.7 seconds.  Crunch speed: 776855.9
-./split6           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 3.1 seconds.  Crunch speed: 6493252.9
-./split7           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 3.0 seconds.  Crunch speed: 6652254.0
-./split8           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 48.0 seconds.  Crunch speed: 416639.5
-./split9           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 27.9 seconds.  Crunch speed: 715600.7
-./splitc1          C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 12.8 seconds.  Crunch speed: 1566162.6
-./splitc2          C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 11.2 seconds.  Crunch speed: 1784909.5
-./splitc3          C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 10.1 seconds.  Crunch speed: 1979358.4
-./split_subparser  C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 2.3 seconds.  Crunch speed: 8742942.4
-
+./split5.py        Python: Saw 20000000 lines (60000000 words/806116396 chars) in 16.0 seconds.  Crunch Speed: 1248867.0
+pypy ./split5.py   Python: Saw 20000000 lines (60000000 words/806116396 chars) in 3.9 seconds.  Crunch Speed: 5188371.6
+./split.py         Python: Saw 20000000 lines (60000000 words/806116396 chars) in 15.2 seconds.  Crunch Speed: 1314968.6
+pypy ./split.py    Python: Saw 20000000 lines (60000000 words/806116396 chars) in 3.4 seconds.  Crunch Speed: 5827597.5
+./split1           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 5.1 seconds.  Crunch speed: 3916771.3
+./split2           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 11.6 seconds.  Crunch speed: 1718342.1
+./split3           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 2.6 seconds.  Crunch speed: 7670585
+./split6           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 1.6 seconds.  Crunch speed: 12465878.2
+./split7           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 1.4 seconds.  Crunch speed: 14098300.6
+./split8           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 12.9 seconds.  Crunch speed: 1547788.4
+./split9           C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 15.0 seconds.  Crunch speed: 1335624.9
+./splitc1          C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 4.8 seconds.  Crunch speed: 4136194.0
+./splitc2          C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 5.1 seconds.  Crunch speed: 3933352.2
+./splitc3          C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 4.3 seconds.  Crunch speed: 4653897.3
+./split_subparser  C++   : Saw 20000000 lines (60000000 words/806116396 chars) in 1.2 seconds.  Crunch speed: 16071186.4

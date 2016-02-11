@@ -15,8 +15,18 @@ python --version
 echo "=== End System info"
 echo
 
-for i in `find . -maxdepth 1 -executable -iname 'split*.py' | sort ; find . -maxdepth 1 -executable \! -iname '*.py' -iname 'split*' | sort`
-do
+#do python first
+for i in `find . -maxdepth 1 -executable -iname 'split*.py' | sort` ; do
+  printf "%-18s " $i
+  $i < test_data
+
+  printf "pypy %-13s " $i
+  pypy $i < test_data
+
+done
+
+#do c++ timings
+for i in `find . -maxdepth 1 -executable -iname 'split*' | sort |grep -v '\.py$'` ; do
 	printf "%-18s " $i
 	$i < test_data
 done
