@@ -14,7 +14,8 @@ g++ --version | head -n1
 python --version
 echo "=== End System info"
 echo
-
+# warming up file
+wc test_data
 for i in `find . -maxdepth 1 -executable -iname 'split*.py' | sort ; find . -maxdepth 1 -executable \! -iname '*.py' -iname 'split*' | sort`
 do
 	printf "%-18s " $i
