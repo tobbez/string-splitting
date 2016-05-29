@@ -16,7 +16,7 @@ private:
     int m_iSize;
     
 public:
-    int size() const { return m_iSize; }
+    inline int size() const { return m_iSize; }
     const char* begin() { return m_itBeg; }
     const char* end() const { return m_itBeg + m_iSize; }
     
@@ -26,12 +26,13 @@ public:
     {}
 };
 
-void split(vector<StringRef> &ret, const string& s)
+int split(vector<StringRef> &ret, const string& s, const char delimiter = ' ')
 {
     for(auto ps = &s[0], pd = ps, pe = ps + s.size(); ps < pe; ps = pd + 1)
     {
-        ret.emplace_back(StringRef(ps, pd = find(ps, pe, ' ')));
+        ret.emplace_back(StringRef(ps, pd = find(ps, pe, delimiter)));
     }
+    return ret.size();
 }
 
 int main() {
@@ -45,11 +46,11 @@ int main() {
     size_t numChars = 0;
 
     vector<StringRef> words;
+    words.reserve(100);
     while(getline(cin, input_line)) 
     {
         words.clear();
-        split(words, input_line);
-        numWords += words.size();
+        numWords += split(words, input_line);
         for(const auto &s:words)
             numChars += s.size();
         count++;
