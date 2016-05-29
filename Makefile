@@ -1,6 +1,6 @@
 CXXFLAGS = -Wall -O3
 
-all: split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser
+all: split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser split10 split11
 
 split7: split7.cpp | deps/strtk
 	$(CXX) $(LDFLAGS) -Ideps/strtk/ $(CXXFLAGS) split7.cpp -o split7
