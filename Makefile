@@ -1,6 +1,6 @@
 CXXFLAGS = -Wall -O3
 
-all: split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser split10 split11
+all: split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser split10 split11 split12 
 
 split7: split7.cpp | deps/strtk
 	$(CXX) $(LDFLAGS) -Ideps/strtk/ $(CXXFLAGS) split7.cpp -o split7
@@ -12,7 +12,7 @@ split_subparser: split_subparser.cpp | deps/json_parser
 .PHONY: clean update-deps
 
 clean:
-	@rm -f split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser
+	@rm -f split1 split2 split6 split7 split8 split9 splitc1 splitc2 splitc3 split_subparser split10 split11 split12
 
 update-deps: deps
 	git --git-dir=deps/strtk/.git/ --work-tree=deps/strtk/ fetch origin
